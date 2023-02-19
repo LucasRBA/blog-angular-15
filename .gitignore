@@ -1,7 +1,8 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
 /.ideas
-
+/node-api/node_modules
+/node-api/.env
 # Compiled output
 /dist
 /tmp
