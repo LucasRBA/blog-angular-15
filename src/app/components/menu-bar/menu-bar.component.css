@@ -3,10 +3,12 @@
 .container__menu-bar > ul{
   display: flex;
   flex-direction: row;
+  font-size:1.2em; 
+  margin-bottom:0.5em ;
 }
 
 .container__menu-bar > ul > li{
-  margin-right: 20px;
+  margin-right: 1.2em;
   list-style: none;
 }
 

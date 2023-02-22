@@ -7,9 +7,15 @@
     <hr />
   </div>
   <div class="content__description">
-    <a [routerLink]="['']"> << VOLTAR </a>
     <p>
       {{ contentDescription }}
     </p>
   </div>
+  <div class="button_div">
+    <app-button buttonLabel="Compose" color="#8a8701" [routerLink]="['/compose']" ></app-button>
+    <app-button class="back_button" buttonLabel="Back" color='#0377fc' [routerLink]="['']"></app-button>
+  </div>
 </div>
+
+
+

@@ -1,10 +1,13 @@
 .container__big-card{
 
-  margin-left: 20px;
-  margin-right: 20px;
+  margin-left: 1.4em;
+  margin-right: 1.4em;
 
-  width: 400px;
-  height: 500px;
+  min-width: 12.5em;
+  min-height: 14em;
+
+  width: 26em;
+  height: 28em;
 
   display: flex;
   flex-direction: column;
@@ -13,12 +16,12 @@
 }
 
 .big-card__title > h1  {
-  margin-top: 15px;
-  font-size: 20px;
+  margin-top: 1.2em;
+  font-size: 1.4em;
 }
 
 .big-card__description{
-  margin-top: 20px;
+  margin-top: 1.2em;
 }
 
 .big-card__description > p > a {
@@ -26,6 +29,6 @@
 }
 
 .big-card__photo > img{
-  width: 100%;
-  min-width: 400px;
+  min-width: 25em;
+  width: 100%
 }
