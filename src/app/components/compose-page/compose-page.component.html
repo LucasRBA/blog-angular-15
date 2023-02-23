@@ -2,32 +2,48 @@
 <div class="compose_card">
   <div class="compose_title">
     <p>Post title</p>
-    <input type="text" mat-label="Insert your post title here..." />
+    <input type="text" 
+           label="Insert your post title here..."
+           id="title"
+           required
+           [(ngModel)]="post.title"
+           name="title" />
   </div>
   <div class="compose_content">
     <p>Post Content</p>
     <textarea
       class="compose_content"
-      name="post_content"
       id="compose-content"
       cols="30"
       rows="10"
       label="Type your text content here"
-    ></textarea>
+      id="content"
+      required
+      [(ngModel)]="post.content"
+      name="content">
+    </textarea>
   </div>
   <div class="compose_image">
     <p>Image Address</p>
-    <input type="text" label="Insert your post image here..." />
+    <input type="text" 
+           label="Insert your post image here..." 
+           id="image"
+           required
+           [(ngModel)]="post.image"
+           name="image"/>
   </div>
   <div class="compose_author">
     <p>Author name</p>
     <input
       type="text"
       label="Insert your name here, if you want(otherwise it will be Anonymous)..."
-    />
+      id="author"
+      required
+      [(ngModel)]="post.author"
+      name="author"/>
   </div>
   <div class="compose_buttons_div">
-    <app-button class="compose_button" buttonLabel="Post" color="#08bf5a"></app-button>
+    <app-button class="compose_button" buttonLabel="Post" color="#08bf5a" (click)="savePost()" ></app-button>
     <app-button class="back_button" buttonLabel="Back" color='#0377fc' [routerLink]="['']"></app-button>
   </div>
 </div>

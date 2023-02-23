@@ -7,19 +7,23 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const dbConfig = require("./db.config");
 
-var corsOptions = {
-    origin: "http://localhost:3031"
-};
-
-
 const app = express();
 
-app.use(cors(corsOptions));
+var corsOptions = {
+    origin: "http://localhost:8081"
+};
 
-app.use(bodyParser.urlencoded({
+app.use(cors());
+
+app.use(bodyParser.json());
+
+app.use(express.urlencoded({
   extended: true
 }));
-app.use(express.json());
+
+app.get("/", (req, res) => {
+  res.json({message:"Welcome to posts API!!!"});
+})
 
 const db = require("./models");
 db.mongoose
@@ -38,7 +42,8 @@ db.mongoose
 
 require("../node-api/router/post.routes")(app);
 
+const PORT = process.env.PORT || 8080;
 
-app.listen(3000, function() {
-  console.log("Server started on port 3000");
+app.listen(PORT, function() {
+  console.log(`Server started on port ${PORT}`);
 });

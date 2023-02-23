@@ -12,7 +12,8 @@ input{
     width:30em; 
     background-color: rgb(58, 58, 58);
     min-height: 1.2em;
-    height:2.2em
+    height:2em;
+    font-size:1em
 }
 
 textarea{
@@ -22,6 +23,7 @@ textarea{
     min-width: 10em;
     width:45em;
     background-color: rgb(58, 58, 58);
+    font-size: 1em;
 }
 
 .compose_card{

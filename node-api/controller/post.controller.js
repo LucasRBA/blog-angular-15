@@ -2,6 +2,7 @@ const db = require("../models");
 const Post = db.post;
 
 exports.create = (req, res) => {
+
     if (!req.body.title) {
         res.status(400).send({ message: "Content can't be empty!" });
         return;
@@ -31,6 +32,7 @@ exports.create = (req, res) => {
 };
 
 exports.findAll = (req, res) => {
+
     const title = req.query.title;
     var condition = title ? { title: { $regex: new RegExp(title), $options: "i" } } : {};
   
@@ -47,6 +49,7 @@ exports.findAll = (req, res) => {
 };
 
 exports.findOne = (req, res) => {
+
   const id = req.params.id;
 
   Post.findById(id)
@@ -87,6 +90,7 @@ exports.update = (req, res) => {
 };
 
 exports.delete = (req, res) => {
+
   const id = req.params.id;
 
   Post.findByIdAndRemove(id)
