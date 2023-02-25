@@ -1,5 +1,5 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA, Type } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -13,6 +13,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { ContentComponent } from './pages/content/content.component';
 import { ComposePageComponent } from './components/compose-page/compose-page.component';
 import { ButtonComponent } from './components/button/button.component';
+import { AlertComponent } from './components/alert/alert.component';
 
 
 @NgModule({
@@ -25,15 +26,21 @@ import { ButtonComponent } from './components/button/button.component';
     HomeComponent,
     ContentComponent,
     ComposePageComponent,
-    ButtonComponent, 
+    ButtonComponent,
+    AlertComponent, 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule, 
     HttpClientModule, 
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports:[
+    FormsModule,
+    ReactiveFormsModule
+  ]
 })
 export class AppModule { }

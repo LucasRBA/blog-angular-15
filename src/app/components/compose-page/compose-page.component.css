@@ -56,3 +56,11 @@ textarea{
     margin-left: 25em;
 }
 
+.initialState {
+    pointer-events: none;
+    cursor: not-allowed;
+}
+
+.required{
+    color:red;
+}

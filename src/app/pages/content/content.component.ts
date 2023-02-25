@@ -1,5 +1,6 @@
-import { Component, OnInit, NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { Component, OnInit, NgModule, CUSTOM_ELEMENTS_SCHEMA, Input, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ButtonComponent } from 'src/app/components/button/button.component';
 import {dataFake} from '../../data/dataFake'
 
 @Component({
@@ -13,6 +14,13 @@ export class ContentComponent implements OnInit {
   contentDescription:string = ""
   private id:string | null = "0"
 
+  buttonComponent : ButtonComponent = new ButtonComponent();
+
+  // disabled = this.buttonComponent.disabled;
+
+  
+  
+
   constructor(
     private route:ActivatedRoute
   ) { }
@@ -22,7 +30,8 @@ export class ContentComponent implements OnInit {
      this.id = value.get("id")
     )
 
-    this.setValuesToComponent(this.id)
+    this.setValuesToComponent(this.id);
+    
   }
 
   setValuesToComponent(id:string | null){

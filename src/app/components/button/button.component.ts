@@ -1,4 +1,5 @@
 import { Component, OnInit, Input} from '@angular/core';
+import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion'
 
 @Component({
   selector: 'app-button',
@@ -10,9 +11,13 @@ export class ButtonComponent implements OnInit {
   buttonLabel:string=""
   @Input()
   color:string=""
+
   constructor() { }
 
   ngOnInit(): void {
+
   }
 
 }
+
+
