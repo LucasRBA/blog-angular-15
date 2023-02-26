@@ -21,8 +21,16 @@
   height: 18.7em;
 }
 
+.content__title {
+  margin-top: 1.2em;
+  font-size: 1.4em;
+}
+
 .content__description{
   margin-top: 1.4em;
+  font-size: 1.2em;
+  margin-left: 4em;
+  margin-right: 4em;
 }
 
 .content__description > p{
@@ -31,7 +39,7 @@
 }
 
 .button_div{
-  margin-top: 0.5em;
+  margin-top: 1em;
   display:flex;
   flex-direction: row;
   justify-content: left;
@@ -39,4 +47,9 @@
 
 .back_button {
   margin-left: 15em;
+}
+
+.content__info > p{
+  margin-top: 1em;
+  color:rgb(100, 100, 100);
 }

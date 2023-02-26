@@ -112,6 +112,7 @@ export class ComposePageComponent implements OnInit {
   }
 
 
-  
+  //two alerts bug fix when submit a post
+
 
 }

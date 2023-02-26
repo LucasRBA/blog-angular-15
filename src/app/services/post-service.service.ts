@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
 import { Post } from '../models/post.model';
 
+
 const baseUrl = 'http://localhost:8080/api/posts'
 
 @Injectable({
@@ -36,18 +37,23 @@ export class PostServiceService {
     return this.http.get<Post[]>(`${baseUrl}?title=${title}`)
   }
 
+  findById(id:string): Observable<string | Post[]> {
+    return this.http.get<Post[]>(`${baseUrl}?title=${id}`)
+  }
+
   //Will retrieve all the post and sort them, the last post created [0] will be sent to be rendered inside big-card
   //the others will be rendered as small-cards
-  orderByDate(): Observable<Post[]> {
+  orderBySubmitDate(): Observable<Post[]> {
     const postArray = this.getAll().subscribe;
     return this.getAll().pipe(
       map(postArray =>{
         return postArray.sort((a,b) => {
-          const dateA = a.createdAt ? new Date(a.createdAt) : new Date(0);
-          const dateB = b.createdAt ? new Date(b.createdAt) : new Date(0);
+          const dateA = (a.createdAt) ? new Date(a.createdAt) : new Date(0);
+          const dateB = (b.createdAt) ? new Date(b.createdAt) : new Date(0);
           //console.log(postArray);
           return dateB.getTime() - dateA.getTime();
         })
+        
       })
     )
   }

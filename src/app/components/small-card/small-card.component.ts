@@ -1,4 +1,5 @@
 import { Component, Input, OnInit, NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { PostServiceService } from 'src/app/services/post-service.service';
 
 @Component({
   selector: 'app-small-card',
@@ -16,7 +17,7 @@ export class SmallCardComponent implements OnInit {
   @Input()
   Id:string="0"
 
-  constructor() { }
+  constructor(private postService:PostServiceService) { }
 
   ngOnInit(): void {
   }

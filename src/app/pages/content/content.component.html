@@ -1,15 +1,18 @@
 <div class="container__content">
   <div class="content__cover">
-    <img src="{{ photoCover }}" alt="" srcset="">
+    <img src="{{ currentPost.image }}" alt="" srcset="">
   </div>
   <div class="content__title">
-    <h1>{{ contentTitle }}</h1>
+    <h1>{{ currentPost.title }}</h1>
     <hr />
   </div>
   <div class="content__description">
     <p>
-      {{ contentDescription }}
+      {{ currentPost.content }}
     </p>
+  </div>
+  <div class="content__info" >
+    <p>{{ this.convertDate(currentPost.createdAt) }} by {{currentPost.author}} </p>
   </div>
   <div class="button_div">
     <app-button buttonLabel="Compose" color="#8a8701" [routerLink]="['/compose']" ></app-button>

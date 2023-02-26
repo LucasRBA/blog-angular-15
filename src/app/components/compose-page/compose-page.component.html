@@ -61,7 +61,7 @@
   <div class="compose_buttons_div" (click)="alert.displayAlert('Can not submit form before filling the title and content',3, 'red')" >
     <app-button #postButton id="composeButton" class="compose_button" buttonLabel="Post" color="#08bf5a" 
     (click)="savePost()" (click)="redirectAfterDelay(5, '/')" ></app-button>
-    <app-button #backButton class="back_button" buttonLabel="Back" color='#0377fc' [routerLink]="['']"></app-button>
+    <app-button #backButton class="back_button" buttonLabel="Home" color='#0377fc' [routerLink]="['']"></app-button>
   </div>
 </div>
 </form>

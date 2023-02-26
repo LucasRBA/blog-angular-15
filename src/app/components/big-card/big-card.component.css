@@ -21,14 +21,21 @@
 }
 
 .big-card__description{
-  margin-top: 1.2em;
+  margin-top: 0.6em;
 }
 
 .big-card__description > p > a {
+  font-size: 1.1em;
   color: grey;
 }
 
 .big-card__photo > img{
   min-width: 25em;
   width: 100%
+}
+
+.big-card__createdAt {
+  margin-top: 0.4em;
+  color:grey;
+  margin-bottom:2em
 }

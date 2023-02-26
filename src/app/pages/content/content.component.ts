@@ -1,6 +1,9 @@
 import { Component, OnInit, NgModule, CUSTOM_ELEMENTS_SCHEMA, Input, ViewChild } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ButtonComponent } from 'src/app/components/button/button.component';
+import { PostServiceService } from 'src/app/services/post-service.service';
+import { DateConversionService } from 'src/app/services/date-conversion.service';
+import { Post } from '../../models/post.model'
 import {dataFake} from '../../data/dataFake'
 
 @Component({
@@ -14,32 +17,49 @@ export class ContentComponent implements OnInit {
   contentDescription:string = ""
   private id:string | null = "0"
 
+  @Input() currentPost : Post = {
+  author: '',
+  title:'',
+  image:'',
+  content: '',
+  createdAt: ''
+  }
+
   buttonComponent : ButtonComponent = new ButtonComponent();
 
-  // disabled = this.buttonComponent.disabled;
-
-  
-  
 
   constructor(
-    private route:ActivatedRoute
+    private route:ActivatedRoute,
+    private postService:PostServiceService, 
+    private router:Router, 
+    private dateConverter : DateConversionService
   ) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe( value =>
      this.id = value.get("id")
-    )
 
-    this.setValuesToComponent(this.id);
+    )
+    this.getCurrentDetailedPost(this.route.snapshot.params["id"]);
     
   }
 
-  setValuesToComponent(id:string | null){
-    const result = dataFake.filter(article => article.id == id)[0]
+  getCurrentDetailedPost(id:string):void {
+    this.postService.get(id).subscribe({
+      next:(data)=> {
+        this.currentPost = data;
+        console.log(this.currentPost);
+      },
+      error: (e) => {
+        console.error(e);
+      }
+    })
+  }
 
-    this.contentTitle = result.title
-    this.contentDescription = result.description
-    this.photoCover = result.photoCover
+
+  convertDate(date:Date | string | undefined): Date | string {
+    const convertedDate = this.dateConverter.convertCreationDate(date);
+    return convertedDate;
   }
 
 }
