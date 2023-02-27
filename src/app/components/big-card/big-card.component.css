@@ -22,12 +22,16 @@
 
 .big-card__description{
   margin-top: 0.6em;
+  margin-right:0.5em;
+  min-width: 12.5em;
+
+  width: 26em;
 }
 
 .big-card__description > p > a {
   font-size: 1.1em;
+  overflow-wrap: break-word;
   color: grey;
-  margin-right:0.5em;
 }
 
 .big-card__photo > img{
