@@ -12,7 +12,7 @@
            [(ngModel)]="inputValue"
            formControlName="title"
            (keyup)="isTitleFilled(this.postButtonRef, 'initialState')" />
-    <div *ngIf="title?.invalid && (title?.dirty || title?.touched)" class="alert alert-danger">
+    <div *ngIf="title?.invalid && (title?.dirty || title?.touched)">
       <div *ngIf="title?.errors?.['required']"><span class="required">Title is required</span></div>
       <div *ngIf="title?.errors?.['minlength']"><span class="required">Title must be at least 2 characters</span></div>
     </div>
@@ -31,7 +31,7 @@
       [(ngModel)]="post.content"
       formControlName="content">
     </textarea>
-    <div *ngIf="content?.invalid && (content?.dirty || content?.touched)" class="alert alert-danger">
+    <div *ngIf="content?.invalid && (content?.dirty || content?.touched)">
       <div *ngIf="content?.errors?.['required']"><span class="required">Content is required</span></div>
       <div *ngIf="content?.errors?.['minlength']"><span class="required">Content must be at least 20 characters</span></div>
     </div>
@@ -44,9 +44,9 @@
            required
            [(ngModel)]="post.image"
            formControlName="image"/>
-      <div *ngIf="image?.invalid && (image?.dirty || image?.touched)" class="alert alert-danger">
-        <div *ngIf="image?.errors?.['required']"><span class="required">Image is required</span></div>
-        <div *ngIf="image?.errors?.['minlength']"><span class="required">Image must be at least 20 characters</span></div>
+      <div *ngIf="image?.invalid && (image?.dirty || image?.touched)">
+        <div *ngIf="image?.errors?.['required']"><span class="required-warn">Are you sure you want to make a post without an image?</span></div>
+        <div *ngIf="image?.errors?.['minlength']"><span class="required-warn">Image must be at least 20 characters</span></div>
       </div>
   </div>
   <div class="compose_author">
@@ -56,13 +56,19 @@
       placeholder="Insert your name here, if you want(otherwise it will be Anonymous)..."
       id="author"
       required
-      [(ngModel)]="post.author"/>
+      [(ngModel)]="post.author"
+      formControlName="author"/>
+      <div *ngIf="author?.invalid && (author?.dirty || author?.touched)">
+        <div *ngIf="author?.errors?.['required']"><span class="required-warn">If you don't type anything the author of this post will be changed to Anonymous...</span></div>
+        <div *ngIf="author?.errors?.['minlength']"><span class="required-warn">Image must be at least 20 characters</span></div>
+      </div>
   </div>
-  <div class="compose_buttons_div" (click)="alert.displayAlert('Can not submit form before filling the title and content',3, 'red')" >
+  <div class="compose_buttons_div" >
+    <div (click)="alert.displayAlert('Can not submit post before filling the title and content',3, 'red', (inputValue.length === 0))">
     <app-button #postButton id="composeButton" class="compose_button" buttonLabel="Post" color="#08bf5a" 
     (click)="savePost()" (click)="redirectAfterDelay(5, '/')" ></app-button>
+    </div>
     <app-button #backButton class="back_button" buttonLabel="Home" color='#0377fc' [routerLink]="['']"></app-button>
   </div>
 </div>
 </form>
-

@@ -27,6 +27,7 @@
 .big-card__description > p > a {
   font-size: 1.1em;
   color: grey;
+  margin-right:0.5em;
 }
 
 .big-card__photo > img{

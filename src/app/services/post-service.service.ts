@@ -44,7 +44,6 @@ export class PostServiceService {
   //Will retrieve all the post and sort them, the last post created [0] will be sent to be rendered inside big-card
   //the others will be rendered as small-cards
   orderBySubmitDate(): Observable<Post[]> {
-    const postArray = this.getAll().subscribe;
     return this.getAll().pipe(
       map(postArray =>{
         return postArray.sort((a,b) => {

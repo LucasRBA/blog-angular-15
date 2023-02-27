@@ -12,7 +12,8 @@ export class AlertComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  displayAlert(message: string, seconds: number, backgroundColor:string): void {
+  displayAlert(message: string, seconds: number, backgroundColor:string, condition:boolean): void {
+    if (condition) {
     const alertBox = document.createElement('div');
     alertBox.innerText = message;
     alertBox.style.backgroundColor = backgroundColor;
@@ -30,5 +31,6 @@ export class AlertComponent implements OnInit {
       alertBox.style.display = 'none';
     }, seconds * 1000);
   }
+}
 
 }

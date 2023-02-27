@@ -14,9 +14,15 @@ exports.create = (req, res) => {
         image: req.body.image,
         author: req.body.author
       });
-      if( post.author === "" || post.author === " " || post.author === null) {
-        post.author = "Anonymous"
+
+
+      if(!post.author || /^\s*$/.test(post.author) ) {
+        post.author = "Anonymous";
+        console.log(post.author);
+      } else {
+        post.author.trim();
       }
+
     
       post
         .save(post)

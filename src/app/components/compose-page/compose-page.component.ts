@@ -57,13 +57,15 @@ export class ComposePageComponent implements OnInit {
     this.postContent = new FormGroup({
       title : new FormControl(this.post.title,[Validators.required, Validators.minLength(2)]),
       content : new FormControl(this.post.content,[Validators.required, Validators.minLength(20)]),
-      image : new FormControl(this.post.image ,[Validators.required, Validators.minLength(20)])
+      image : new FormControl(this.post.image ,[Validators.required, Validators.minLength(20)]),
+      author: new FormControl(this.post.author, [Validators.required, Validators.minLength(1)])
     });
   }
 
   get title() {return this.postContent.get('title')}
   get content() {return this.postContent.get('content')}
   get image() {return this.postContent.get('image')}
+  get author() {return this.postContent.get('author')}
 
   savePost():void {
     const data = {
@@ -96,7 +98,7 @@ export class ComposePageComponent implements OnInit {
     setTimeout(() => {
       window.location.href = url;
     }, seconds * 1000);
-    this.alert.displayAlert(`Your post was successfully submitted, and you will be redirected in ${seconds} seconds`, seconds, 'green');
+    this.alert.displayAlert(`Your post was successfully submitted, and you will be redirected in ${seconds} seconds`, seconds, 'green', true);
   }
 
   isTitleFilled(element: ElementRef, classToRemove:string):void {
@@ -112,7 +114,7 @@ export class ComposePageComponent implements OnInit {
   }
 
 
-  //two alerts bug fix when submit a post
+
 
 
 }

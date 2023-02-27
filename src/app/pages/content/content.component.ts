@@ -4,7 +4,6 @@ import { ButtonComponent } from 'src/app/components/button/button.component';
 import { PostServiceService } from 'src/app/services/post-service.service';
 import { DateConversionService } from 'src/app/services/date-conversion.service';
 import { Post } from '../../models/post.model'
-import {dataFake} from '../../data/dataFake'
 
 @Component({
   selector: 'app-content',
@@ -12,11 +11,8 @@ import {dataFake} from '../../data/dataFake'
   styleUrls: ['./content.component.css']
 })
 export class ContentComponent implements OnInit {
-  photoCover:string = ""
-  contentTitle:string = ""
-  contentDescription:string = ""
-  private id:string | null = "0"
 
+  private id:string | null = "0"
   @Input() currentPost : Post = {
   author: '',
   title:'',

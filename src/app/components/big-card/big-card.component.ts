@@ -1,11 +1,8 @@
 import { Component, Input, OnInit, NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { from } from 'rxjs';
-import { map } from 'rxjs';
 import { Post } from 'src/app/models/post.model';
 import { PostServiceService } from 'src/app/services/post-service.service';
 import { DateConversionService } from 'src/app/services/date-conversion.service';
-
-
 
 @Component({
   selector: 'app-big-card',
@@ -21,8 +18,6 @@ export class BigCardComponent implements OnInit {
 
   constructor(private postService : PostServiceService,
               private dateConverter : DateConversionService) { }
-
-
 
   ngOnInit(): void {
     const postArray$ = from(this.getCurrentBigCard());
@@ -46,6 +41,18 @@ export class BigCardComponent implements OnInit {
     return convertedDate;
   }
 
+  truncateContent(): string | undefined {
+    if (this.posts?.[0]?.content !== undefined && this.posts?.[0]?.content?.length  > 200) {
+      const truncatedContent = this.posts?.[0]?.content?.substring(0,200);
+      const lastSpace = truncatedContent.lastIndexOf(' ');
+      return truncatedContent.substring(0, lastSpace) + '...';
+    }
+    return this.posts?.[0]?.content;
+  }
 
+  includeReadMore() {
+    return this.posts?.[0]?.content !== undefined && this.posts?.[0]?.content?.length  > 200;
+
+  }
+  
 }
-// Read More inclusion with link when the post content has more than 200 characters
