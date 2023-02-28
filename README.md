@@ -25,3 +25,11 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## Addtions to this fork of the project:
+
+- A nodejs api was added in order to provide data for the angular project instead of the mocked data;
+- A compose page was added for users to post it, the last post made will automatically be spotlighted as the major card element;
+- Buttons and alerts were changed to be components intead of part of other components;
+- Validations in both the api and angular project were added to prevent posts without title and author.
+
